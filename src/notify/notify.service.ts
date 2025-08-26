@@ -38,23 +38,23 @@ export class NotifyService {
         this.logger.log(`Sent Field Boss Notification to ${channelId}`)
     }
 
-    @Cron('0,10,20,40,50 * * * * *', { timeZone: 'Asia/Seoul' })
-    async sendEvery10Sec_Test() {
-        const channelId = process.env.DISCORD_CHANNEL_ID!
-        const channel = this.discord.getTextChannel(channelId)
+    // @Cron('0,10,20,40,50 * * * * *', { timeZone: 'Asia/Seoul' })
+    // async sendEvery10Sec_Test() {
+    //     const channelId = process.env.DISCORD_CHANNEL_ID!
+    //     const channel = this.discord.getTextChannel(channelId)
 
-        if (!channel) {
-            this.logger.warn(`Channel not found: ${channelId}`)
-            return
-        }
+    //     if (!channel) {
+    //         this.logger.warn(`Channel not found: ${channelId}`)
+    //         return
+    //     }
 
-        try {
-            await channel.send(this.getMessageWithTimeLog('⚠️ 매 분 00초 알림 전송 테스트 중 ! ⚠️'))
-            this.logger.log(`Sent Test Notification to ${channelId}`)
-        } catch (err) {
-            this.logger.error('Failed to send message', err as Error);
-        }
-    }
+    //     try {
+    //         await channel.send(this.getMessageWithTimeLog('⚠️ 매 분 00초 알림 전송 테스트 중 ! ⚠️'))
+    //         this.logger.log(`Sent Test Notification to ${channelId}`)
+    //     } catch (err) {
+    //         this.logger.error('Failed to send message', err as Error);
+    //     }
+    // }
 
     private getMessageWithTimeLog(message: string): string {
         const timeLog = new Date().toUTCString()
