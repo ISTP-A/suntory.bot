@@ -12,7 +12,7 @@ export class DiscordClient implements OnModuleInit, OnModuleDestroy {
     })
 
     async onModuleInit() {
-        this.client.once('ready', () => {
+        this.client.once('clientReady', () => {
             this.logger.log(`Logged in as ${this.client.user?.tag}`)
         })
 
